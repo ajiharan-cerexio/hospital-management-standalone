@@ -1,0 +1,30 @@
+<div class="login-bg">
+  <div class="signin-container">
+    <p-card [style]="{ width: '50vw' }" styleClass="login-card">
+      <ng-template pTemplate="header">
+        <h2 class="p-2 m-0">Hospital Management</h2>
+        <small class="p-2">Welcome Please Login</small>
+      </ng-template>
+
+      <div>
+        <div class="flex flex-column gap-2 p-2">
+          <label for="username">Username</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+        </div>
+        <div class="flex flex-column gap-2 p-2">
+          <label for="username">Password</label>
+          <p-password
+            id="password"
+            [toggleMask]="true"
+            [feedback]="false"
+          ></p-password>
+        </div>
+
+        <div class="p-1" class="mt-4">
+          <p-button label="Login"></p-button>
+        </div>
+      </div>
+      <ng-template pTemplate="footer"> </ng-template>
+    </p-card>
+  </div>
+</div>
