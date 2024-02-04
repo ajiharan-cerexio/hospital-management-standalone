@@ -6,10 +6,25 @@
         <small class="p-2">Welcome Please Login</small>
       </ng-template>
 
-      <div>
+      <form [formGroup]="loginForm" #formDir="ngForm">
         <div class="flex flex-column gap-2 p-2">
           <label for="username">Username</label>
-          <input pInputText id="username" aria-describedby="username-help" />
+          <input
+            pInputText
+            id="userName"
+            formControlName="userName"
+            aria-describedby="username-help"
+          />
+
+          <div
+            *ngIf="
+              loginForm.get('userName')?.invalid &&
+              (loginForm.get('userName')?.dirty ||
+                loginForm.get('userName')?.touched)
+            "
+          >
+            <p class="text-red-500">*Username is required</p>
+          </div>
         </div>
         <div class="flex flex-column gap-2 p-2">
           <label for="username">Password</label>
@@ -17,13 +32,24 @@
             id="password"
             [toggleMask]="true"
             [feedback]="false"
+            formControlName="password"
           ></p-password>
+          <div
+            *ngIf="
+              loginForm.get('password')?.invalid &&
+              (loginForm.get('password')?.dirty ||
+                loginForm.get('password')?.touched)
+            "
+          >
+            <p class="text-red-500">*Password is required</p>
+          </div>
         </div>
 
         <div class="p-1" class="mt-4">
-          <p-button label="Login"></p-button>
+          <p-button label="Login" [disabled]="loginForm.invalid"></p-button>
         </div>
-      </div>
+      </form>
+
       <ng-template pTemplate="footer"> </ng-template>
     </p-card>
   </div>
